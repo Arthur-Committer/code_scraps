@@ -1,20 +1,17 @@
 use std::io;
-fn fibo(limit_number: u128) {
-    let mut sequence = vec![1, 1, 2];
-    let mut temp: u128;
-    let mut i: u128 = 0;
-    for _ in 0..((limit_number / 3) + 1) {
-        for _ in 0..3 {
-            i += 1;
-            if i > limit_number {
-                return;
-            };
-            print!("|{}", sequence[0]);
+use std::process::Command;
 
-            temp = sequence[1] + sequence[2];
-            sequence[0] = sequence[1];
-            sequence[1] = sequence[2];
-            sequence[2] = temp;
+fn fibo(limit_number: u128) {
+    let (mut n1, mut n2): (u128, u128) = (1, 1);
+    let mut temp: u128;
+    for i in 1..=limit_number {
+        if i == 1 || i == 2 {
+            print!("{}{}", if i > 1 { " , " } else { " " }, 1);
+        } else {
+            temp = n1 + n2;
+            print!(" , {}", temp);
+            n1 = n2;
+            n2 = temp;
         }
     }
 }
@@ -32,7 +29,14 @@ fn main() {
             return;
         }
     };
+    Command::new("clear")
+        .status()
+        .expect("Erro ao limpar terminal");
+    for _ in 1..=35 {
+        print!("    ");
+    }
+    println!("First {} Fibonacci numbers below:", number);
     print!("[ ");
     fibo(number);
-    println!("| ]");
+    println!(" ]");
 }

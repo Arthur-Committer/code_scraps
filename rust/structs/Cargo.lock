@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "basic_functions"
+name = "structs"
 version = "0.1.0"
