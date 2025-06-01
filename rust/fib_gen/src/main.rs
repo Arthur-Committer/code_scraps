@@ -20,6 +20,10 @@ fn main() {
     let mut number = String::new();
     io::stdin()
         .read_line(&mut number)
+        .to_lowercase()                          // tudo minúsculo
+        .chars()                                  // itera sobre os caracteres
+        .filter(|c| !c.is_whitespace())           // remove espaços
+        .collect::<String>();  
         .expect("Error reading the entry");
 
     let number: u128 = match number.trim().parse() {
