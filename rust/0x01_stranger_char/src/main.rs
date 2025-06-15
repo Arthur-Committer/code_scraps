@@ -1,4 +1,4 @@
-//use std::io;
+use std::io;
 use std::fs;
 use std::path::Path;
 use std::time::Instant;
@@ -113,13 +113,13 @@ fn first_unique_char(entry: &str) -> char {
 fn main() {
     
     // read the entry of the user
-    /*    
+        
     let mut entry = String::new();
         io::stdin()
             .read_line(&mut entry)
             .expect("Error reading the entry");
     let entry = entry.trim_end();
-    */
+    
     
 
     let content = fs::read_to_string(Path::new("data/list.txt"))
